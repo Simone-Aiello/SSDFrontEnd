@@ -36,7 +36,7 @@
             }, {
                 withCredentials: true
             }).then(response =>{
-                push('/')
+                push('/reservations')
             }).catch(error =>{
                 console.log(error)
                 alert_displayed = error.response.data.non_field_errors[0]
@@ -95,7 +95,7 @@
                 
                     <!-- Register buttons -->
                     <div class="text-center">
-                    <p>Not a member? <a href="#!">Register</a></p>
+                    <p>Not a member? <a href="#/register">Register</a></p>
                     </div>
                 </form>
             </div>

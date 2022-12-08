@@ -64,6 +64,7 @@
                 <h5 class="card-title">Reservation #{reservation.id}</h5>
             </div>
             <ul class="list-group list-group-flush">
+                <li class="list-group-item">Customer: {reservation.customer}</li>
                 <li class="list-group-item">Reservation period: {reservation.reservation_start_date} - {reservation.reservation_end_date}</li>
                 <li class="list-group-item">Number of seats: {reservation.number_of_seats}</li>
                 <li class="list-group-item">Reserved umbrella number: {reservation.reserved_umbrella_id}</li>

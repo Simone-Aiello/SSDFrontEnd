@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import axios from 'axios';
+    import { push } from 'svelte-spa-router';
     let user = null;
     const getCookieValue = (name: string) => (
       document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
@@ -24,8 +25,9 @@
           'X-CSRFToken': getCookieValue('csrftoken'),
         },
         withCredentials: true,
-      }).then((data) =>{
+      }).then(() =>{
         user = null
+        push("/login")
       }).catch((error) =>{
         console.log("Error in do logout: " + error)
       })
@@ -41,9 +43,10 @@
         <div class="navbar-nav">
             {#if user == null}
               <a class="nav-link active" aria-current="page" href="/#/login">Login</a>
+              <a class="nav-link active" aria-current="page" href="/#/register">Register</a>
             {:else}
+            <a class="nav-link active" href="/#/reservations">Reservations</a>
               <a class="nav-link active" aria-current="page" href = "/#/" on:click={doLogout}>Logout</a>
-              <a class="nav-link" href="/">Reservations</a>
             {/if}  
         </div>
       </div>
