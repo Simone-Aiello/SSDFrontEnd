@@ -19,17 +19,21 @@
 
     async function onRegister() {
         console.log(current_form_data)
+        let error = false
         for (let key in form_error){
             form_error[key] = null;
         }
         for (let key in current_form_data){
             if(current_form_data[key] == null || current_form_data[key] == ""){
                 form_error[key] = "This field may not be blank"
+                error = true
             }
         }
         if(current_form_data.email != null && current_form_data.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) == null){
             form_error.email = "Enter a valid email address"
+            error = true
         }
+        if (error) return;
         axios.post('http://localhost:8000/api/v1/auth/registration/',{
             username: current_form_data.username,
             email: current_form_data.email,
@@ -53,6 +57,9 @@
 
 <main>
     <Navbar />
+    <div id="title">
+        <h1>Create an account</h1>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-2"></div>
@@ -128,5 +135,10 @@
 </main>
 
 <style>
-
+#title{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+}
 </style>

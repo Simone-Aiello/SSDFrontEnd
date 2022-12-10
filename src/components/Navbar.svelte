@@ -22,7 +22,7 @@
       await axios.post('http://localhost:8000/api/v1/auth/logout/', {
       }, {
         headers: {
-          'X-CSRFToken': getCookieValue('csrftoken'),
+          'x-csrftoken': getCookieValue('csrftoken'),
         },
         withCredentials: true,
       }).then(() =>{
@@ -35,7 +35,7 @@
 </script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#/">Umbrella reservations</a>
+      <a class="navbar-brand" href="#/">Secure Sea Design</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,7 +45,8 @@
               <a class="nav-link active" aria-current="page" href="/#/login">Login</a>
               <a class="nav-link active" aria-current="page" href="/#/register">Register</a>
             {:else}
-            <a class="nav-link active" href="/#/reservations">Reservations</a>
+              <a class="nav-link active" href="/#/newreservation">New Reservation</a>
+              <a class="nav-link active" href="/#/reservations">My Reservations</a>
               <a class="nav-link active" aria-current="page" href = "/#/" on:click={doLogout}>Logout</a>
             {/if}  
         </div>

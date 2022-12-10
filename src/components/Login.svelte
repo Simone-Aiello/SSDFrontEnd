@@ -47,6 +47,9 @@
 
 <main>
     <Navbar />
+    <div id="title">
+        <h1>Welcome back, insert your credentials!</h1>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-2"></div>
@@ -105,5 +108,10 @@
 </main>
 
 <style>
-
+#title{
+    margin-top: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
 </style>

@@ -1,7 +1,6 @@
 <script lang="ts">
     import axios from "axios";
     import { onMount } from "svelte";
-    import Login from "./Login.svelte";
     import Navbar from "./Navbar.svelte";
     const getCookieValue = (name: string) => (
       document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
@@ -11,7 +10,6 @@
         await axios.get('http://localhost:8000/api/v1/beachreservation/', {
                 withCredentials: true
             }).then(response =>{
-                console.log(response.data)
                 reservations = response.data
             }).catch(error =>{
                 console.log(error)
@@ -42,7 +40,9 @@
 
 <main>
     <Navbar />
-    <h1>Reservation page</h1>
+    <div id="title">
+        <h1>Reservations made</h1>
+    </div>
     <!-- Modal -->
     <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -59,7 +59,7 @@
         </div>
     </div>
     {#each reservations as reservation, i}
-        <div class="card" id="{""+i}">
+        <div class="card reservation-card" id="{""+i}">
             <div class="card-body">
                 <h5 class="card-title">Reservation #{reservation.id}</h5>
             </div>
@@ -74,12 +74,19 @@
             <button on:click={() => {
                 selected_reservation.id = reservation.id;
                 selected_reservation.index = i
-            }} type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Cancel reservation</button>
+            }} type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete reservation</button>
         </div>
     {/each}
 </main>
 
 <style>
-
-
+#title{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+}
+.reservation-card{
+    margin-bottom: 20px;
+}
 </style>

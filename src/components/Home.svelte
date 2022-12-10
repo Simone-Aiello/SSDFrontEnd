@@ -4,10 +4,17 @@
 
 <main>
     <Navbar />
-    <h1>Home page</h1>
+    <div id="title">
+        <h1>Site for booking umbrellas by Secure Sea Design beach resort</h1>
+    </div>
 </main>
 
 <style>
-
-
+#title{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>
