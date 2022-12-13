@@ -87,6 +87,7 @@
     justify-content: center;
 }
 .reservation-card{
-    margin-bottom: 20px;
+    width: 50%;
+    margin: 2em auto;
 }
 </style>

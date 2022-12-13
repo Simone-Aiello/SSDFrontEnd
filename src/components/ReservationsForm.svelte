@@ -133,6 +133,7 @@
                                     </option>
                                 {/each}
                             </select>
+                            <label class="form-label" for="form2Example2">Umbrella number</label>
                             <!-- {#if form_error.reserved_umbrella_id}
                                 <input type="number" id="form2Example2" class="form-control is-invalid" bind:value={new_reservation_data.reserved_umbrella_id}/>
                                 <div class="invalid-feedback">{form_error.reserved_umbrella_id}</div>
@@ -151,7 +152,7 @@
                         </div>
                     
                         <!-- Submit button --> 
-                        <button type="button" class="btn btn-primary btn-block mb-4" on:click={postNewReservation}>Submit</button> 
+                        <button id="submit-button" type="button" class="btn btn-primary btn-block mb-4" on:click={postNewReservation}>Submit</button> 
                     </form>
             </div>
             <div class="col-2"></div>
@@ -166,5 +167,11 @@
     display: flex;
     justify-content: center;
 }
-
+.container{
+    margin: auto;
+    width: 60%;
+}
+#submit-button{
+    width: 100%;
+}
 </style>

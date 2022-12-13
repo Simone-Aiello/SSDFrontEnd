@@ -126,7 +126,7 @@
                     </div>
                 
                     <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4" on:click={onRegister}>Register</button>
+                    <button id="submit-button" type="button" class="btn btn-primary btn-block mb-4" on:click={onRegister}>Register</button>
                 </form>
             </div>
             <div class="col-2"></div>
@@ -137,8 +137,15 @@
 <style>
 #title{
     margin-top: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
+}
+.container{
+    margin: auto;
+    width: 60%;
+}
+#submit-button{
+    width: 100%;
 }
 </style>

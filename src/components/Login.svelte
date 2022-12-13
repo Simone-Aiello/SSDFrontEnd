@@ -2,6 +2,9 @@
     import axios from 'axios';
     import Navbar from './Navbar.svelte';
     import {push} from 'svelte-spa-router'
+    const getCookieValue = (name: string) => (
+      document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
+    )
     let current_form_data = {
         "username": "",
         "password": ""
@@ -34,6 +37,9 @@
                 username: current_form_data.username,
                 password: current_form_data.password
             }, {
+                headers: {
+                    'x-csrftoken': getCookieValue('csrftoken'),
+                },
                 withCredentials: true
             }).then(response =>{
                 push('/reservations')
@@ -94,7 +100,7 @@
                     </div>
                 
                     <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4" on:click={doLogin}>Sign in</button>
+                    <button id="submit-button" type="button" class="btn btn-primary btn-block mb-4" on:click={doLogin}>Sign in</button>
                 
                     <!-- Register buttons -->
                     <div class="text-center">
@@ -113,5 +119,12 @@
     margin-bottom: 25px;
     display: flex;
     justify-content: center;
+}
+.container{
+    margin: auto;
+    width: 60%;
+}
+#submit-button{
+    width: 100%;
 }
 </style>
