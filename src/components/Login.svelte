@@ -44,7 +44,6 @@
             }).then(response =>{
                 push('/reservations')
             }).catch(error =>{
-                console.log(error)
                 alert_displayed = error.response.data.non_field_errors[0]
             })
         }

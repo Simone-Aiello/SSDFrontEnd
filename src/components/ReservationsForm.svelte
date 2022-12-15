@@ -92,55 +92,60 @@
                     <form>
                         <!-- Number of seats input -->
                         <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example1">Number of seats</label>
                             {#if form_error.number_of_seats != null}
                                 <input type="number" id="form2Example1" class="form-control is-invalid" bind:value={new_reservation_data.number_of_seats}/>
                                 <div class="invalid-feedback">{form_error.number_of_seats}</div>
                             {:else}
                                 <input type="number" id="form2Example1" class="form-control" bind:value={new_reservation_data.number_of_seats}/>
                             {/if}
-                            <label class="form-label" for="form2Example1">Number of seats</label>
                         </div>
                     
                         <!-- Start date input -->
                         <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example2">Start Date</label>
                             {#if form_error.reservation_start_date != null}
                                 <input type="date" id="form2Example2" class="form-control is-invalid" bind:value={new_reservation_data.reservation_start_date} on:input={dateChanged}/>
                                 <div class="invalid-feedback">{form_error.reservation_start_date}</div>
                             {:else}
                                 <input type="date" id="form2Example2" class="form-control" bind:value={new_reservation_data.reservation_start_date} on:input={dateChanged}/>
                             {/if}
-                            <label class="form-label" for="form2Example2">Start Date</label>
                         </div>
 
                         <!-- End date input -->
                         <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example2">End Date</label>
                             {#if form_error.reservation_end_date != null}
                                 <input type="date" id="form2Example2" class="form-control is-invalid" bind:value={new_reservation_data.reservation_end_date} on:input={dateChanged}/>
                                 <div class="invalid-feedback">{form_error.reservation_end_date}</div>
                             {:else}
                                 <input type="date" id="form2Example2" class="form-control" bind:value={new_reservation_data.reservation_end_date} on:input={dateChanged}/>
                             {/if}
-                            <label class="form-label" for="form2Example2">End Date</label>
                         </div>                    
-      
+                        
                         <!-- Umbrella id input -->
                         <div class="form-outline mb-4">
-                            <select class="form-select" bind:value={new_reservation_data.reserved_umbrella_id}>
-                                <option value={null}>Select the desired umbrella</option>
-                                {#each free_umbrella as umbrella}
-                                    <option value={umbrella}>
-                                        {umbrella}
-                                    </option>
-                                {/each}
-                            </select>
                             <label class="form-label" for="form2Example2">Umbrella number</label>
-                            <!-- {#if form_error.reserved_umbrella_id}
-                                <input type="number" id="form2Example2" class="form-control is-invalid" bind:value={new_reservation_data.reserved_umbrella_id}/>
-                                <div class="invalid-feedback">{form_error.reserved_umbrella_id}</div>
+                            {#if form_error.reserved_umbrella_id == null}
+                                <select class="form-select" bind:value={new_reservation_data.reserved_umbrella_id}>
+                                    <option value={null}>Select the desired umbrella</option>
+                                    {#each free_umbrella as umbrella}
+                                        <option value={umbrella}>
+                                            {umbrella}
+                                        </option>
+                                    {/each}
+                                </select>
                             {:else}
-                                <input type="number" id="form2Example2" class="form-control" bind:value={new_reservation_data.reserved_umbrella_id}/>
+                                <select class="form-select is-invalid" bind:value={new_reservation_data.reserved_umbrella_id}>
+                                    <option value={null}>Select the desired umbrella</option>
+                                    {#each free_umbrella as umbrella}
+                                        <option value={umbrella}>
+                                            {umbrella}
+                                        </option>
+                                    {/each}
+                                </select>
+                                <div class="invalid-feedback">{form_error.reserved_umbrella_id}</div>
                             {/if}
-                            <label class="form-label" for="form2Example2">Umbrella number</label>-->
                         </div>  
                         
                         <!-- 2 column grid layout for inline styling -->

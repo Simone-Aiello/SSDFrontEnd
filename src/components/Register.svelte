@@ -15,7 +15,9 @@
         password2: null,
         alert: null,
     }
-
+    const getCookieValue = (name: string) => (
+      document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
+    )
 
     async function onRegister() {
         console.log(current_form_data)
@@ -39,6 +41,9 @@
             email: current_form_data.email,
             password1: current_form_data.password1,
             password2: current_form_data.password2,
+            headers: {
+                    'x-csrftoken': getCookieValue('csrftoken'),
+                },
         }).then(() =>{
             push("/login")
         }).catch((error) =>{
